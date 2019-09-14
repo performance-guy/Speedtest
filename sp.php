@@ -6,6 +6,50 @@ use Spatie\Async\Pool;
 use Entrecore\GTMetrixClient\GTMetrixClient;
 use Entrecore\GTMetrixClient\GTMetrixTest;
 
+
+// Check if the form is submitted
+if ( isset( $_POST['submit'] ) ) {
+
+// retrieve the form data by using the element's name attributes value as key
+
+    echo '<h2>form data retrieved by using the $_REQUEST variable<h2/>';
+
+$web = $_REQUEST['web'];
+$email = $_REQUEST['email'];
+
+// display the results
+echo 'Your data is ' . $web .' ' . $email;
+
+// check if the post method is used to submit the form
+
+if ( filter_has_var( INPUT_POST, 'submit' ) ) {
+
+    echo '<h2>form data retrieved by using $_POST variable<h2/>';
+
+$web = $_POST['web'];
+$email = $_POST['email'];
+
+// display the results
+echo 'Your data is ' . $web .' ' . $email;
+}
+
+// check if the get method is used to submit the form
+
+if ( filter_has_var( INPUT_GET, 'submit' ) ) {
+
+    echo '<h2>form data retrieved by using $_GET variable<h2/>';
+
+$web = $_GET['web'];
+$email = $_GET['email'];
+}
+
+// display the results
+echo 'Your data is ' . $web .' ' . $email;
+exit;
+}
+
+
+
 $client = new GTMetrixClient();
 $client->setUsername('salmansaleem920@hotmail.com');
 $client->setAPIKey('95d9d685cacc92669804814e18712e00');
