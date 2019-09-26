@@ -1,5 +1,10 @@
 <?php
 require_once 'vendor/autoload.php';
+include 'db_connection.php';
+
+
+
+
 use WidgetsBurritos\WebPageTest\WebPageTest;
 use Teapot\StatusCode;
 use Spatie\Async\Pool;
@@ -132,6 +137,8 @@ if ($response = $wpt->getTestResults($test_id)) {
 
         // Test is complete.
         $full_response = $response;
+
+
         echo var_dump($response);
 
     }

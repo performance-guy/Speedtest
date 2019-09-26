@@ -3,6 +3,7 @@
         "widgetsburritos/webpagetest": "^1.0",
         "shrikeh/teapot": "^2.3",
         "philcook/gtmetrix": "^1.0",
-        "spatie/async": "^1.0"
+        "spatie/async": "^1.0",
+      "ext-mysqli": "*"
     }
 }
