@@ -1,6 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
-include 'db_connection.php';
+include 'db.php';
 
 
 
@@ -90,7 +90,7 @@ if ($response = $wpt->runTest('https://www.kinsta.com',$data)) {
         while ($response->statusCode != StatusCode::OK) {
             $response = $wpt->getTestStatus($test_id);
             if ($response->statusCode == StatusCode::OK) {
-                echo var_dump($response);
+
                 break;
             } else if ($response->statusCode == StatusCode::CONTINUING) {
 
@@ -102,7 +102,7 @@ if ($response = $wpt->runTest('https://www.kinsta.com',$data)) {
 
                         return 2;
                     })->then(function (int $output) {
-                        echo $output;
+//                        echo $output;
                     });
                 }
 
@@ -117,7 +117,7 @@ if ($response = $wpt->runTest('https://www.kinsta.com',$data)) {
 
                         return 2;
                     })->then(function (int $output) {
-                        echo $output;
+//                        echo $output;
                     });
                 }
 
@@ -137,9 +137,26 @@ if ($response = $wpt->getTestResults($test_id)) {
 
         // Test is complete.
         $full_response = $response;
+        echo '<pre>'; print_r($full_response);
+        $f_loadtime= $full_response->data->average->firstView->loadTime;
+        $f_bytesInDoc= $full_response->data->average->firstView->bytesInDoc;
+        $f_score_cache= $full_response->data->average->firstView->score_cache;
+        $f_requests= $full_response->data->average->firstView->requests;
+        $f_render= $full_response->data->average->firstView->render;
+
+        $r_loadtime= $full_response->data->average->repeatView->loadTime;
+        $r_bytesInDoc= $full_response->data->average->repeatView->bytesInDoc;
+        $r_score_cache= $full_response->data->average->repeatView->score_cache;
+        $r_requests= $full_response->data->average->repeatView->requests;
+        $r_render= $full_response->data->average->repeatView->render;
+
+        $aa = 1+1;
+        $bb = $aa -1 ;
 
 
-        echo var_dump($response);
+        $c ="asfasf";
+
+        echo "Done";
 
     }
     else if (in_array($response->statusCode, [StatusCode::CONTINUING, StatusCode::SWITCHING_PROTOCOLS])) {
