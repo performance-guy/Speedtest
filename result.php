@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,15 @@
     <title>Results </title>
 </head>
 <body>
+
+    <?php
+        include 'db.php';
+        $id =  $_GET['id'];
+        $website =  $_GET['website'];
+        getWebsiteData($id);
+
+?>
+
 <div class="jumbotron">
     <div class="row w-100">
         <div class="col-md-3">
